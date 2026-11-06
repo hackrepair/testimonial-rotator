@@ -1,0 +1,23 @@
+name: Bug report
+description: Report a reproducible development defect
+body:
+  - type: markdown
+    attributes:
+      value: "Security reports belong in SECURITY.md's private channel. Future updates are unlikely."
+  - type: textarea
+    id: environment
+    attributes:
+      label: Versions and environment
+      description: WordPress, PHP, Reborn, theme, and relevant plugins. No credentials.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps, expected result, and actual result
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Redacted error messages and configuration

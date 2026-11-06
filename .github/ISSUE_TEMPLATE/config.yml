@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Private security report
+    url: https://github.com/hackrepair/testimonial-rotator/security/policy
+    about: Follow the private reporting instructions; do not disclose vulnerabilities publicly.
+  - name: General questions
+    url: https://github.com/hackrepair/testimonial-rotator/discussions
+    about: Limited maintenance scope; ongoing support is not guaranteed.

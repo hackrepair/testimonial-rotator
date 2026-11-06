@@ -1,19 +1,27 @@
 <?php
 /*
-Plugin Name: Testimonial Rotator
-Plugin URI: https://halgatewood.com/testimonial-rotator
-Description: The best way to add testimonials to your WordPress site.
-Author: Hal Gatewood
-Author URI: http://www.halgatewood.com
+Plugin Name: Testimonial Rotator (Reborn)
+Description: Add and manage rotating testimonials. Unofficial maintenance edition by Jim Walker, The Hack Repair Guy — HackRepair.com.
+Author: Hal Gatewood (abandoned website)
 Text Domain: testimonial-rotator
 Domain Path: /languages
-Version: 3.0.3
+Version: 4.0
+Requires at least: 6.9.4
+Requires PHP: 7.4
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Update URI: https://github.com/hackrepair/testimonial-rotator
 */
 
 
 // CONSTANTS
 if( !defined('TESTIMONIAL_ROTATOR_URI') ) define('TESTIMONIAL_ROTATOR_URI', trailingslashit( plugin_dir_url( __FILE__ )));
 if( !defined('TESTIMONIAL_ROTATOR_DIR') ) define('TESTIMONIAL_ROTATOR_DIR', plugin_dir_path( __FILE__ ));
+
+define( 'THRG_TR_FILE', __FILE__ );
+define( 'THRG_TR_VERSION', '4.0' );
+require_once TESTIMONIAL_ROTATOR_DIR . 'includes/class-thrg-tr-details.php';
+THRG_TR_Details::boot();
 
 // SETUP
 add_action( 'plugins_loaded', 'testimonial_rotator_setup' );
@@ -267,7 +275,8 @@ function get_testimonial_rotator( $atts )
 
 // MEAT & POTATOES OF THE ROTATOR
 function testimonial_rotator( $atts )
-{	
+{
+	$atts = is_array( $atts ) ? array_filter( $atts, 'is_scalar' ) : array();
 	// GET ID
 	$id = isset($atts['id']) ? $atts['id'] : false;
 
@@ -276,7 +285,10 @@ function testimonial_rotator( $atts )
 	if( $id )
 	{
 		$rotator = get_post( $id );
-		if( !$rotator ) testimonial_rotator_error( sprintf( __('Rotator could not be found with ID: %d', 'testimonial-rotator' ), $id ) );
+		if( !$rotator || $rotator->post_type !== 'testimonial_rotator' ) {
+			testimonial_rotator_error( sprintf( __('Rotator could not be found with ID: %d', 'testimonial-rotator' ), $id ) );
+			return;
+		}
 
 		// ROTATOR SLUG
 		$rotator_slug = $rotator->post_name;

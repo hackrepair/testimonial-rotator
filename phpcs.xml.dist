@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ruleset name="Testimonial Rotator Reborn">
+  <description>Advisory standards review of inherited code; not the CI release gate.</description>
+  <file>.</file>
+  <exclude-pattern>/.git/*</exclude-pattern>
+  <exclude-pattern>/dist/*</exclude-pattern>
+  <exclude-pattern>/tests/*</exclude-pattern>
+  <arg name="extensions" value="php"/>
+  <config name="minimum_wp_version" value="6.9.4"/>
+  <config name="testVersion" value="7.4-8.3"/>
+  <rule ref="WordPress-Extra"/>
+  <rule ref="PHPCompatibilityWP"/>
+</ruleset>

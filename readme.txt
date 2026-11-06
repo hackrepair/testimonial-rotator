@@ -1,287 +1,145 @@
-=== Plugin Name ===
-Contributors: halgatewood,ghuger,richardgabriel
-Donate link: https://halgatewood.com/donate/
-Tags: testimonials, sidebar, shortcode, testimonial, praise, homage, testimony, witness, appreciation, rotator, rotators, for developers
-Requires at least: 5.0
-Tested up to: 5.7
-Stable tag: trunk
+=== Testimonial Rotator (Reborn) ===
+Contributors: hackrepair
+Tags: testimonials, testimonial rotator, reviews, widgets, shortcode
+Requires at least: 6.9.4
+Tested up to: 7.1.3
+Requires PHP: 7.4
+Stable tag: 4.0
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Easily add and manage Testimonials to your site.
+An abandoned WordPress favorite, brought back to life by Jim Walker, The Hack Repair Guy.
 
 == Description ==
 
-Finally a really simple way to manage testimonials on your site. This plugin creates a testimonial and a testimonial rotator custom post type, complete with WordPress admin fields for adding testimonials and assigning them to rotators for display. It includes a Widget and Shortcode to display the testimonials.
+= Good testimonials deserve a future =
 
-= Documentation =
-* [Getting Started](https://halgatewood.com/docs/plugins/testimonial-rotator/getting-started-testimonial-rotator)
-* [Rotator Attributes](https://halgatewood.com/docs/plugins/testimonial-rotator/full-list-rotator-attributes)
-* [Creating a Custom Theme](https://halgatewood.com/docs/plugins/testimonial-rotator/creating-a-theme)
-* [CSS Styling](https://halgatewood.com/docs/plugins/testimonial-rotator/css-targeting)
-* [Available Filters](https://halgatewood.com/docs/plugins/testimonial-rotator/available-filters)
-* [Demos](https://halgatewood.com/docs/plugins/testimonial-rotator/demos)
-* [Full List of Guides](http://halgatewood.com/docs/plugins/testimonial-rotator/)
+Your customers took the time to say something wonderful about your business. The plugin displaying those words should not be the reason you cannot move your website forward.
 
+The original Testimonial Rotator was a useful, straightforward WordPress plugin. Then development stopped. Its website was abandoned years ago, its documentation links went stale, and site owners were left carrying an aging plugin into a changing WordPress and PHP world.
 
-= The Features You Need = 
-* Change all rotator settings in the admin
-* Add testimonials to multiple rotators
-* Prev/Next Buttons
-* Vertical Align Testimonials based on Height
-* Star Ratings
-* Author information field
-* Testimonial single template
-* Ability to make custom templates
-* hReview Support
-* Pagination in List Format
-* Ability to show the Add Rotator section based on User Role
-* Settings section
-* New hooks and filters
+I am Jim Walker, **The Hack Repair Guy**. I am taking over maintenance of this unofficial continuation and bringing it back to life as **Testimonial Rotator (Reborn)**.
 
-= Help Videos =
-https://www.youtube.com/watch?v=SVg73QdgSuM
+The goal is to keep what people liked about the original—simple testimonial management, flexible displays, and familiar shortcodes—while bringing the code forward for PHP 8.3 and current WordPress use.
 
-https://www.youtube.com/watch?v=IMWVDHbtnVw
+= A new chapter, with respect for the original =
 
+Hal Gatewood created the original Testimonial Rotator. That credit stays. The old website links do not: this edition includes its own plugin information and points to current maintenance resources.
+
+Reborn is maintained by [Jim Walker, The Hack Repair Guy — HackRepair.com](https://hackrepair.com "WordPress security, hack repair, and ongoing maintenance"). It is an independent continuation, not a claim of endorsement or an official transfer from the original author.
+
+= Keep the testimonials. Renew the foundation. =
+
+* Create and organize testimonials in WordPress.
+* Group testimonials into rotators and use them in multiple places.
+* Display testimonials through widgets and familiar shortcodes.
+* Choose from seven bundled display templates.
+* Use ratings, author information, images, excerpts, and list displays.
+* Keep the original content identifiers and shortcode aliases as maintenance work progresses.
+
+= Maintenance scope and future updates =
+
+**Future updates are unlikely.** Reborn is a limited security and PHP-version maintenance release intended to extend the useful life of an abandoned plugin. It is not a commitment to ongoing development, new features, or regular updates. Please plan accordingly when choosing software for a new site or maintaining an existing one.
+
+= Where version 4.0 stands =
+
+**Version 4.0 is currently a development candidate.** The first maintenance work adds metadata-save request checks, improves handling of missing rotators and malformed input, corrects a widget limit conversion, and restores a complete local View details experience.
+
+Compatibility metadata follows the current Stickies settings: WordPress 6.9.4 minimum, WordPress 7.1.3 compatibility target, and PHP 7.4 minimum. The declared WordPress 7.1.3 value has not yet been independently runtime-tested for Reborn.
+
+All PHP files in the preceding development milestone passed PHP 8.3.33 syntax checks, and focused runtime checks covered seven bundled rotator templates and metadata-save permissions. Full security review, browser interaction checks, and populated-site upgrade testing remain in progress. Bringing the plugin back includes doing that work carefully; it does not mean every historical issue has already been resolved.
+
+== History ==
+
+= The original =
+
+Testimonial Rotator was created by Hal Gatewood to make customer testimonials easy to manage and display in WordPress. Over time it gained rotator controls, star ratings, author information, widgets, shortcodes, and additional templates. Version 3.0 brought the separate theme pack into the main plugin.
+
+= The years in between =
+
+The archived upstream changelog lists version **3.0.3**, dated June 15, 2020, as its final numbered release. SVN trunk still identifies itself as 3.0.3, with its last recorded change on March 30, 2021. The original website was subsequently abandoned, leaving site owners with broken links and no dependable maintenance path.
+
+The [original WordPress.org listing](https://wordpress.org/plugins/testimonial-rotator/) records closure on February 25, 2021 for a security issue. Reborn does not erase that history or claim that renaming a plugin fixes its security. The closure and applicable code paths are part of the ongoing review.
+
+= Reborn =
+
+In November 2026, I recovered the archived source and began the 4.0 maintenance project after PHP 8.3 compatibility became a practical problem for a site using the plugin.
+
+This continuation has a new name and a clear purpose: preserve useful testimonial content, repair aging code, and give the plugin a maintained future. **Testimonial Rotator (Reborn)** is that fresh start.
+
+The project repository is [hackrepair/testimonial-rotator](https://github.com/hackrepair/testimonial-rotator). A repository link is not an announcement that a public release has already been published. This edition is an unofficial continuation; the original WordPress.org listing has not been reopened by this work.
 
 == Installation ==
 
-1. Add plugin to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Add a testimonial rotator
-1. Create testimonials and specify which rotator you want it to be a part of
-1. Add the rotators to your pages using the shortcode or developers can add the placeholders in their themes.
+= Test the development build on staging =
 
-Check out this [Help Guide](https://halgatewood.com/docs/plugins/testimonial-rotator/getting-started-testimonial-rotator) for more information about getting started and what all the settings mean.
+1. Back up the database, existing plugin directory, settings, and any custom testimonial templates.
+2. Use a staging copy of your website with PHP 8.3.
+3. Replace the existing testimonial-rotator plugin files with the Reborn package. Keep the folder name testimonial-rotator.
+4. Activate Testimonial Rotator (Reborn), then check your existing testimonials, rotators, widgets, shortcodes, and custom templates.
+5. Review the PHP error log and test the display controls before considering a production upgrade.
 
+Do not uninstall the existing plugin as an upgrade step. Preserve your backup so you can restore the previous files and database if necessary.
 
-== Screenshots ==
+= Familiar shortcodes =
 
-1. Clean admin panel. Available only to those you want.
-2. Simple rotator settings.
-3. Uses built-in WordPress functionality like excerpt, featured images and menu order.
-4. A Testimonial Rotator inserted into a block of text with a shortcode.
-5. hReview data included, great for SEO.
-6. Create your own custom templates.
-7. Widget Options, override rotator settings if needed.
-8. Settings area where you can customize error handling and hide Font Awesome if you need to.
+* `[testimonial_rotator id="123"]` displays a rotator.
+* `[testimonial_rotator id="123" format="list"]` displays its testimonials as a list.
+* `[testimonial_single id="456"]` displays an individual testimonial.
+* `[testimonial_rotator_rating id="123"]` displays the aggregate rating.
 
+Replace the example IDs with your own rotator or testimonial IDs. Existing hyphenated aliases remain available.
 
+== Frequently Asked Questions ==
+
+= Who maintains Reborn? =
+Jim Walker, The Hack Repair Guy, is taking over maintenance of this independent continuation. Hal Gatewood remains credited as the original author.
+
+= Why remove the old website links? =
+The original website was abandoned years ago, and those links no longer provide dependable documentation or support. Reborn bundles this information locally and uses HackRepair.com for current maintenance contact.
+
+= Will I have to re-enter my testimonials? =
+Preserving existing testimonial posts, rotator relationships, metadata, widget identity, and shortcode names is a core project requirement. The plugin directory remains testimonial-rotator. Verify your actual data on staging; a complete populated-site upgrade test is still pending.
+
+= Is 4.0 ready for a live website? =
+The current build is for development and staging validation. PHP 8.3 checks are underway, and security and broader integration testing remain open. The details page will be updated as those milestones are completed.
+
+= Should I expect more updates? =
+Future updates are unlikely. This work is limited to security and PHP-version maintenance, with no promise of new features, regular releases, or continuing support. The development status and remaining validation work described above still apply.
+
+= Is this an official update from the original developer? =
+No. Reborn is an unofficial maintenance continuation. Original authorship and licensing are preserved.
+
+= Does it require Genesis or Dynamik? =
+The plugin is separate from those themes. The development project includes Genesis/Dynamik integration checks, but custom themes and testimonial templates still need site-specific testing.
 
 == Changelog ==
 
-= 3.0.3 - June 15th, 2020 = 
-* FIX: Security fixes
+= 4.0 — Reborn development =
+* Renamed to Testimonial Rotator (Reborn).
+* Began PHP 8.3 modernization under Jim Walker, The Hack Repair Guy.
+* Added per-post nonce, capability, post-type, autosave, and revision checks to metadata saves.
+* Improved missing-rotator and shortcode-input handling.
+* Corrected widget limit conversion.
+* Added a local WordPress View details dialog with description, history, installation, FAQ, changelog, and support tabs.
+* Removed abandoned website links and retired the legacy theme-pack update request to that website.
+* Preserved existing shortcode names, widget identity, post types, and metadata keys.
+* Security review, browser validation, and populated upgrade testing remain in progress.
 
-= 3.0.2 - Feb. 12th, 2020 =
-* FIX: first round of changes for Google Review errors
+= Archived upstream milestones =
+* 3.0.3 — June 15, 2020: original changelog reports security fixes.
+* 3.0 — October 28, 2019: theme pack merged into the main plugin.
+* 2.2.5 — September 27, 2017: original changelog reports replacing create_function for PHP compatibility.
+* 2.0 — May 15, 2014: expanded rotator controls, ratings, author fields, and display options.
 
-= 3.0.1 - November 18th, 2019 =
-* FIX: botched the update and missed a bunch of the files. Now added.
+The unmodified upstream source and full original changelog are preserved separately in the development archive.
 
-= 3.0 - Oct. 28th, 2019 =
-* NEW: Theme pack merged into this plugin. Thank you for the support those how purchased the theme pack.
+== Support ==
 
-= 2.5.2 - Oct. 19, 2018 =
-* FIX: added wp_reset_postdata to testimonial_rotator_rating
+= A plugin with someone working on it again =
 
-= 2.5 & 2.5.1 - Sept. 25, 2018 =
-* NEW: testimonial_rotator_rating shortcode to show the aggregate rating only
-* NEW: Author information displayed on all testimonials page in admin
-* FIX: Logic for the hReview snippits was incorrect. Much more accurate now.
-* FIX: Single template layout will match the look of the rotator theme it belongs too. This may required changes to your single-testimonial.php file or you may need to create a single-testimonial.php file.
-* FIX: Sort Testimonials by title in admin
-* UPDATED: .pot file
+Maintenance contact: [Jim Walker, The Hack Repair Guy — HackRepair.com](https://hackrepair.com "WordPress security and hack repair").
 
-= 2.4 - Sept. 4, 2018 =
-* FIX: Single templates not looking in the new Testimonial Theme Pack plugin.
-* REMOVED: Theme Pack Updating functionality. Now moved in to the Theme Pack plugin.
+Project repository: [hackrepair/testimonial-rotator](https://github.com/hackrepair/testimonial-rotator).
 
-= 2.3 - August 21, 2018 =
-* UPDATE: Added check for new theme pack
-
-= 2.2.7 - Dec. 18, 2017 =
-* NEW: filter to change the order of the testimonials: testimonial_rotator_order
-
-= 2.2.6 - Dec. 12, 2017 =
-* FIX: Previous/Next buttons not working in widget override settings.
-
-= 2.2.5 - Sept. 27, 2017 =
-* NEW: filter to set 'fx' - testimonial_rotator_fx
-* FIX: Replaced create_function for PHP 7.2 compatibility
-
-= 2.2.4.1 - Nov. 15, 2016 =
-* MISSED: Added the title to the single.php file for Longform
-
-= 2.2.4 - Nov. 15, 2016 =
-* NEW: Ability to hide: title, stars, body, or author from the Rotator settings.
-* FIX: Added the 'title' to the Longform theme. Please check the new 'hide title' option on your Rotator settings if you don't want it to show.
-* TYPO: I can't spell my own theme names: Lonform is now correctly labeled Longform
-
-= 2.2.3 - Nov. 3, 2016 =
-* FIX: Rotator List pagination
-
-= 2.2.2 - October 27th, 2016 =
-* NEW: Custom CSS setting in the admin under 'Testimonials' -> 'Settings'
-
-= 2.2.1 - October 27th, 2016 =
-* NEW: Settings when adding a widget to hide all elements of the rotator: title, stars, body, author and hreview
-* FIX: Boolean attributes can now be passed as 'true/false' or '1/0'
-* FIX: Updated language file
-
-= 2.2 - August 31, 2016 =
-* HUGE FIX: Fixed compatibility of my plugin with Next Gen Gallery, Social Sharing plugins, Jetpack and more!
-* NEW: Added new 'show_link' and 'link_text' attribute with settings in the widget options to make linking to your testimonials super easy!
-* NEW: Added form labels to elements so you don't have to click only on the checkbox or radio button
-* FIX: Updated language file
-
-= 2.1.5 - Apr 19, 2016 = 
-* Change the single page testimonial by adding a content-testimonial.php file in your theme folder.
-
-= 2.1.4.1 - Apr 18, 2016 =
-Cleaned up error in the admin
-
-= 2.1.4 - Apr 18, 2016 =
-* PHP7 Compatibility
-
-= 2.1.3 - Jan 21, 2016 =
-* Single template for Longform template had an extra closing div tag. Thanks @kevinmorton
-
-= 2.1.2 - Jan 18, 2016 =
-* Fixed Single Page Testimonial. Test was missing, not single page pulls from template selected
-* New filters to improve single page.
-
-= 2.1.1 - Jan. 13, 2016 =
-* Fixed excerpt issue cauing fatal errors
-* Moved get_the_excerpt into a wrapper function 'testimonial_rotator_excerpt' with a filter 'testimonial_rotator_the_excerpt' to modify the contents
-
-= 2.1 - Jan. 12, 2016 =
-* New free theme: Longform!
-* Added shortcode for single testimonial [testimonial_single]
-* Added testimonial count to rotator list view
-* See testimonials associated to rotator in edit screen
-* Change the element for the title in settings (default H2)
-* Code added for upcoming custom templates
-* Flip transitions added
-* Fix hreview itemreviewed name
-* Code cleanup and better sanitation of variables
-* Updated text domain from testimonial_rotator to testimonial-rotator
-* Cycle log hidden by default, log="true" to turn on. Thanks @michaelbragg
-* Override rotator settings in the widget. (allows you to change settings for the 'All Rotators' option)
-* Specify the excerpt length in the widget settings (requires PHP 5.3+)
-* New shortcode parameters to hide sections of the testimonial: hide_title, hide_stars, hide_body, hide_author
-
-= 2.0.6 - Updated July 13, 2015 =
-* Changed WP_Widget() to __construct, for maximum PHP5 support
-
-= 2.0.5 - Updated July 20, 2014 =
-* New filter to change the stars to any FontAwesome Icon
-* Improved stability when upgrading from 1.4+
-* When 'Previous/Next' is checked in the rotator it will automatically turn on paged for the list view
-
-= 2.0.4 - Updated July 7, 2014 =
-* Ability to center the stars
-* Hopefully fixed up issues with the_content on the single page
-* Added new filter for pause on hover
-* Added new filter for loading scripts in the footer
-* Added new filter for settings on Widgets
-* Added Rotator IDs to most filters so they can used on a rotator basis
-
-= 2.0.3 - Updated May 30, 2014 =
-* Added thumbnail setting for Rotator
-* Wrapped Init functions with is_admin for the Admin only hooks
-
-= 2.0.2 - Updated May 20, 2014 =
-* Fixed Widget Title
-* Fixed rotator timeout and transition speed
-
-= 2.0.1 - May 15, 2014 =
-* Added wrapper div around quote part of testimonial
-
-= 2.0 -  May 15, 2014 =
-* Change all rotator settings in the admin
-* Add testimonials to multiple rotators
-* Prev / Next Buttons
-* Vertical Align Testimonials based on Height
-* Font Awesome
-* Star Ratings
-* Hide Featured Image
-* Author Cite Field
-* Testimonial single template
-* Ability to make custom templates (Theme Pack coming soon)
-* hReview Support
-* Pagination in List Format
-* Ability to show the Add Rotator section based on User Role
-* New Settings section
-* New hooks added
-* Code cleanup and more commenting
-
-= 1.4 =
-* Use shortcode to display testimonials from all rotators by not passing in an 'id' attribute
-* Completed preparation for translation, wrapped all text in __()
-* Two new filters for the 'supports' section of the register_post_type: testimonial_rotator_supports and testimonial_rotator_testimonial_supports
-* Two new filters for auto-height 'calc': testimonial_rotator_calc and testimonial_rotator_widget_fx
-
-= 1.3.7 =
-* Updated icon for WordPress 3.8
-* Fixed translation and added languages folder, moved .pot to this folder
-* Moved styles and scripts from action wp_head to wp_enqueue_scripts
-* Fixed images and order not showing in admin list view
-* Prepped for an upcoming PRO version!
-
-= 1.3.6 =
-* Fix bug not rotating widget
-
-= 1.3.5 =
-* Changed cycle2 to cycletwo as it was conflicting with other plugins
-
-= 1.3.4 = 
-* Fixed small bug where some themes were adding extra spaces and breaking the rotator
-
-= 1.3.3 =
-* Switched from jQuery Cycle1 to Cycle 2
-* Widget now uses Rotator FX and Timeout settings
-* Added .testimonial_rotator_widget_blockquote class to widget blockquote to help override some CSS problems with themes.
-* Rotator Height is now fixed at the highest testimonial instead of auto adjusting the height
-
-= 1.3.2 =
-reset query bug
-
-= 1.3 =
-* Randomize testimonials without code
-* Hide the title
-* Display excerpt or full testimonial in width
-* Display specific rotator in widget
-* More shortcode examples
-* The widget has been updated with all the features as options, no more coding!
-
-= 1.2 =
-* main testimonial now uses the_content filter to make styling better.
-* include rotator using the rotator slug, for example: [testimonial_rotator id=homepage]
-* new attributes to the shortcode: 
-** hide_title: hides the h2 heading
-** format: settings format=list will remove rotator and display all testimonials
-** limit: set the number of testimonials to display, new default is -1 or all testimonials
-
-= 1.1.5 =
-* small bug in widget javascript
-
-= 1.1.4 =
-* reworking loading of scripts for rotator, should be sorted now.
-
-= 1.1.3 =
-* jQuery ready function always
-
-= 1.1.2 =
-* Testimonial widget using jQuery ready function instead of window.onload
-
-= 1.1.1 =
-* Can't remember, forgot to put this one in (not cool of me, I know)
-
-= 1.1 =
-* Small fix to make the testimonial widget fit it's container
-
-= 1.0 =
-* Initial load of the plugin.
-
+When reporting a problem, include the Reborn version, WordPress and PHP versions, theme, affected shortcode or widget, reproduction steps, and relevant PHP log entries. Remove passwords, tokens, and private customer information before sharing logs.

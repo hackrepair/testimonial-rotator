@@ -1,0 +1,27 @@
+name: Advisory standards review
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  standards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: shivammathur/setup-php@d52fc211a0436f8839a587b3b5b8efddab4744ea # v2
+        with:
+          php-version: '8.3'
+          tools: composer
+      - name: Install isolated review tools
+        run: |
+          mkdir -p /tmp/reborn-review
+          composer --working-dir=/tmp/reborn-review require --dev wp-coding-standards/wpcs phpcompatibility/phpcompatibility-wp dealerdirect/phpcodesniffer-composer-installer --no-interaction --no-plugins
+          /tmp/reborn-review/vendor/bin/phpcs --config-set installed_paths /tmp/reborn-review/vendor/wp-coding-standards/wpcs,/tmp/reborn-review/vendor/phpcompatibility/php-compatibility,/tmp/reborn-review/vendor/phpcompatibility/phpcompatibility-wp,/tmp/reborn-review/vendor/phpcsstandards/phpcsutils,/tmp/reborn-review/vendor/phpcsstandards/phpcsextra,/tmp/reborn-review/vendor/phpcompatibility/phpcompatibility-paragonie
+      - name: Record inherited standards findings
+        continue-on-error: true
+        run: /tmp/reborn-review/vendor/bin/phpcs --standard=phpcs.xml.dist --report-full=standards-report.txt
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: advisory-standards-report
+          path: standards-report.txt
+          if-no-files-found: warn

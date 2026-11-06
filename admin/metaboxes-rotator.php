@@ -34,6 +34,7 @@ function testimonial_rotator_shortcode_metabox()
 function testimonial_rotator_metabox_effects()
 {
 	global $post;
+	wp_nonce_field( 'testimonial_rotator_save_' . $post->ID, 'testimonial_rotator_nonce' );
 
 	$timeout				= (int) get_post_meta( $post->ID, '_timeout', true );
 	$speed					= (int) get_post_meta( $post->ID, '_speed', true );
@@ -225,19 +226,25 @@ function testimonial_rotator_metabox_effects()
 /* SAVE TESTIMONIAL ROTATOR META DATA */
 function testimonial_rotator_save_rotator_meta( $post_id, $post ) 
 {
-	global $post;  
+	$post = get_post( $post_id );
+    if ( !$post || $post->post_type !== 'testimonial_rotator' || wp_is_post_revision( $post_id ) || wp_is_post_autosave( $post_id ) || ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || !current_user_can( 'edit_post', $post_id ) ) {
+        return;
+    }
+    if ( !isset( $_POST['testimonial_rotator_nonce'] ) || !is_string( $_POST['testimonial_rotator_nonce'] ) || !wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['testimonial_rotator_nonce'] ) ), 'testimonial_rotator_save_' . $post_id ) ) {
+        return;
+    }
 	if( isset( $_POST ) && isset( $post->ID ) )  
     {   
 		
 		// INPUTS
-		if ( isset( $_POST['fx'] ) ) 				{ update_post_meta( $post->ID, '_fx', strip_tags( $_POST['fx'] ) ); }
-		if ( isset( $_POST['timeout'] ) ) 			{ update_post_meta( $post->ID, '_timeout', strip_tags( $_POST['timeout'] ) ); }
-		if ( isset( $_POST['speed'] ) ) 			{ update_post_meta( $post->ID, '_speed', strip_tags( $_POST['speed'] ) ); }
-		if ( isset( $_POST['limit'] ) ) 			{ update_post_meta( $post->ID, '_limit', strip_tags( $_POST['limit'] ) ); }
-		if ( isset( $_POST['itemreviewed'] ) ) 		{ update_post_meta( $post->ID, '_itemreviewed', strip_tags( $_POST['itemreviewed'] ) ); }
-		if ( isset( $_POST['template'] ) ) 			{ update_post_meta( $post->ID, '_template', strip_tags( $_POST['template'] ) ); }
-		if ( isset( $_POST['img_size'] ) ) 			{ update_post_meta( $post->ID, '_img_size', strip_tags( $_POST['img_size'] ) ); }
-		if ( isset( $_POST['title_heading'] ) ) 	{ update_post_meta( $post->ID, '_title_heading', strip_tags( $_POST['title_heading'] ) ); }
+		if ( isset( $_POST['fx'] ) && is_scalar( $_POST['fx'] ) ) 				{ update_post_meta( $post->ID, '_fx', strip_tags( $_POST['fx'] ) ); }
+		if ( isset( $_POST['timeout'] ) && is_scalar( $_POST['timeout'] ) ) 			{ update_post_meta( $post->ID, '_timeout', strip_tags( $_POST['timeout'] ) ); }
+		if ( isset( $_POST['speed'] ) && is_scalar( $_POST['speed'] ) ) 			{ update_post_meta( $post->ID, '_speed', strip_tags( $_POST['speed'] ) ); }
+		if ( isset( $_POST['limit'] ) && is_scalar( $_POST['limit'] ) ) 			{ update_post_meta( $post->ID, '_limit', strip_tags( $_POST['limit'] ) ); }
+		if ( isset( $_POST['itemreviewed'] ) && is_scalar( $_POST['itemreviewed'] ) ) 		{ update_post_meta( $post->ID, '_itemreviewed', strip_tags( $_POST['itemreviewed'] ) ); }
+		if ( isset( $_POST['template'] ) && is_scalar( $_POST['template'] ) ) 			{ update_post_meta( $post->ID, '_template', strip_tags( $_POST['template'] ) ); }
+		if ( isset( $_POST['img_size'] ) && is_scalar( $_POST['img_size'] ) ) 			{ update_post_meta( $post->ID, '_img_size', strip_tags( $_POST['img_size'] ) ); }
+		if ( isset( $_POST['title_heading'] ) && is_scalar( $_POST['title_heading'] ) ) 	{ update_post_meta( $post->ID, '_title_heading', strip_tags( $_POST['title_heading'] ) ); }
 
 
 		// CHECKBOXES

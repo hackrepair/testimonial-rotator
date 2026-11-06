@@ -18,22 +18,9 @@ class testimonial_rotator_theme_updater
 
 	private function get_remote()
 	{
-		$updater_email = get_option('testimonial-rotator-theme-license-email');
-		if( !$updater_email AND defined('TESTIMONIAL_ROTATOR_THEME_LICENSE') ) $updater_email = TESTIMONIAL_ROTATOR_THEME_LICENSE;
-		
-        $info = false;
-		$ping_url = "https://halgatewood.com/?edd_au_check_plugin=true";
-		$ping_url .= "&email=" . urlencode( $updater_email );
-		$ping_url .= "&version=" . urlencode( $this->version );
-		$ping_url .= "&slug=" . urlencode( $this->theme_slug );
-		
-        $request = wp_remote_post( $ping_url );
-        if( !is_wp_error($request) || wp_remote_retrieve_response_code($request) === 200)
-        {
-            $info = @unserialize($request['body']);
-        }
-
-        return $info;
+        // Retained for legacy integrations; the abandoned theme-pack endpoint is retired.
+        // Reborn does not yet provide an automatic update service.
+        return false;
 	}
 	
 	public function check_update( $transient )

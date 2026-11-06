@@ -236,7 +236,7 @@ function testimonial_rotator_cpt_icon()
 // SET SETTINGS LINK ON PLUGIN PAGE
 function testimonial_rotator_plugin_action_links( $links, $file ) 
 {
-	$donate_link 		= '<a href="https://halgatewood.com/donate" target="_blank">' . esc_html__( 'Donate', 'testimonial-rotator' ) . '</a>';
+	$donate_link 		= '<a href="https://hackrepair.com" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Support', 'testimonial-rotator' ) . '</a>';
 	$settings_link 		= '<a href="' . admin_url( 'edit.php?post_type=testimonial&page=testimonial-rotator' ) . '">' . esc_html__( 'Settings', 'testimonial-rotator' ) . '</a>';
 	
 	if ( $file == 'testimonial-rotator/testimonial-rotator.php' )

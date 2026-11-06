@@ -16,7 +16,7 @@ class TestimonialRotatorWidget extends WP_Widget
 		$rotator_id 					= isset($instance['rotator_id']) ? $instance['rotator_id'] : 0;
 		$format							= isset($instance['format']) ? $instance['format'] : "rotator";
 		$excerpt_length					= isset($instance['excerpt_length']) ? $instance['excerpt_length'] : "";
-		$limit 							= (int) isset($instance['limit']) ? $instance['limit'] : 5;
+		$limit 							= isset($instance['limit']) ? (int) $instance['limit'] : 5;
 		$show_size 						= (isset($instance['show_size']) AND $instance['show_size'] == "full") ? "full" : "excerpt";
 		$override_rotator_settings 		= (isset($instance['override_rotator_settings']) AND $instance['override_rotator_settings'] == 1) ? 1 : 0;
 		

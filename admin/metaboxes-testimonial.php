@@ -6,7 +6,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /* MAIN TESTIMONIAL META BOX (SELECT BOX OF ROTATORS) */
 function testimonial_rotator_metabox_select() 
 {
-	global $post;	
+	global $post;
+	wp_nonce_field( 'testimonial_rotator_save_' . $post->ID, 'testimonial_rotator_nonce' );
 	$rotator_ids	= testimonial_rotator_break_piped_string( get_post_meta( $post->ID, '_rotator_id', true ) ); 
 	
 	$rating				= get_post_meta( $post->ID, '_rating', true );
@@ -73,7 +74,13 @@ add_filter( 'teeny_mce_buttons', 'testimonial_rotator_mce_buttons', 10, 2 );
 /* SAVE TESTIMONIAL META DATA */
 function testimonial_rotator_save_testimonial_meta( $post_id, $post ) 
 {
-	global $post;  
+	$post = get_post( $post_id );
+    if ( !$post || $post->post_type !== 'testimonial' || wp_is_post_revision( $post_id ) || wp_is_post_autosave( $post_id ) || ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || !current_user_can( 'edit_post', $post_id ) ) {
+        return;
+    }
+    if ( !isset( $_POST['testimonial_rotator_nonce'] ) || !is_string( $_POST['testimonial_rotator_nonce'] ) || !wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['testimonial_rotator_nonce'] ) ), 'testimonial_rotator_save_' . $post_id ) ) {
+        return;
+    }
 	if( isset( $_POST ) && isset( $post->ID ) && get_post_type( $post->ID ) == "testimonial" )  
     {  
 		// SAVE
@@ -81,7 +88,7 @@ function testimonial_rotator_save_testimonial_meta( $post_id, $post )
 		{
 			if( is_array($_POST['rotator_id']))
 			{
-				update_post_meta( $post_id, '_rotator_id', testimonial_rotator_make_piped_string($_POST['rotator_id']) );
+				update_post_meta( $post_id, '_rotator_id', testimonial_rotator_make_piped_string(array_map( 'absint', array_filter( $_POST['rotator_id'], 'is_scalar' ) )) );
 			}
 			else
 			{
