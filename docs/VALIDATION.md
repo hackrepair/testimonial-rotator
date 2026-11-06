@@ -20,3 +20,6 @@ Historical advisory mapping, full output-context review, all privilege boundarie
 
 ## Repository setup verification — November 6, 2026
 The repeatable isolated lab installed the exact newly built ZIP on WordPress 7.0.2 / PHP 8.3.33. Seven templates, missing rotator handling, nonce/capability save checks, the authenticated Plugins row, six details tabs, and an empty PHP debug log passed. The lab removed its own containers afterward. Offline details and deterministic packaging tests also passed. These are fixture checks; the open work above remains open.
+
+## GitHub-hosted verification — November 6, 2026
+The Checks workflow passed at commit f9af3df: both PHP matrix jobs, deterministic packaging, and the built-ZIP WordPress integration job. GitHub's runtime image reported WordPress **7.1.4** and PHP **8.3.36**. All seven template checks, metadata request guards, authenticated plugin/details screens, and the empty debug-log check passed there. This adds fixture evidence for WordPress 7.1.4; it does not establish an actual-site upgrade or close the broader security/browser checks. The separate manual standards workflow generated an advisory report with findings; its success means the reporting workflow completed, not that coding standards or security review are clean.

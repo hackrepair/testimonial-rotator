@@ -3,6 +3,8 @@
 <p align="center"><strong>Good testimonials deserve a future.</strong><br>An abandoned WordPress favorite, brought back to life by Jim Walker, The Hack Repair Guy.</p>
 <p align="center"><a href="https://hackrepair.com/">HackRepair.com</a> · <a href="https://github.com/hackrepair/testimonial-rotator/discussions">Community</a> · <a href="https://github.com/hackrepair/testimonial-rotator/issues">Issues</a> · <a href="https://hackrepair.github.io/testimonial-rotator/">Project page</a></p>
 
+<p align="center"><a href="https://github.com/hackrepair/testimonial-rotator/actions/workflows/ci.yml"><img src="https://github.com/hackrepair/testimonial-rotator/actions/workflows/ci.yml/badge.svg" alt="Repository checks"></a></p>
+
 ## Why Reborn exists
 
 The original Testimonial Rotator helped WordPress owners collect customer testimonials and display them with simple widgets and shortcodes. Development stopped, the original website was abandoned years ago, and site owners were left with aging code and broken documentation links.
@@ -52,7 +54,7 @@ Use your own post IDs. The hyphenated rotator and single-testimonial aliases rem
 | Minimum PHP | 7.4 |
 | Modernization runtime target | PHP 8.3 |
 
-These declarations follow the Stickies plugin format. WordPress 7.1.3 runtime validation is pending. Recorded local runtime evidence uses WordPress 7.0.2 and PHP 8.3.33. CI records its own runtime versions rather than treating these declarations as proof.
+These declarations follow the Stickies plugin format. WordPress 7.1.3 runtime validation is pending. Recorded local runtime evidence uses WordPress 7.0.2 and PHP 8.3.33; GitHub CI also passed on WordPress 7.1.4 and PHP 8.3.36. These are fixture results, not a production-site compatibility guarantee.
 
 ## Develop and test
 
