@@ -1,25 +1,21 @@
 # Validation scope
 
-## Recorded local evidence before repository setup
-- WordPress 7.0.2 / PHP 8.3.33: seven bundled templates rendered fixture content; missing rotator handled; rotator save without nonce and unauthenticated save rejected; authorized save succeeded.
-- All working PHP files linted under PHP 7.4 and PHP 8.3.
-- Authenticated HTTP: original author plain text; no Visit plugin site link; one native View details link; six information tabs; local stylesheet; current compatibility fields.
+## November 7 replacement prerelease
 
-Raw logs are intentionally excluded from the public repository. These observations describe fixtures, not a production deployment.
+The installed ZIP was tested on WordPress 7.0.2 / PHP 8.3.33 in a disposable local fixture. All seven bundled templates rendered in loop and single modes. Save guards, pre-existing malicious values, rating bounds, malformed widget inputs, cite normalization, aggregate averages, caller-post preservation, explicit false overrides and template symlink containment passed. Authenticated plugin/details screens, local stylesheet/font delivery and a clean PHP debug log also passed.
 
-## Repository checks
-- CI syntax matrix: PHP 7.4 and 8.3.
-- Offline details tests: scoped API handling, readme tab generation, row-link deduplication, escaping, author/metadata consistency.
-- Packaging tests: fixed plugin root, no development artifacts, byte-for-byte contents, checksum, and repeatable build output.
-- Disposable WordPress integration: install the built ZIP, run shortcode/template/save-handler fixtures under E_ALL, and verify actual authenticated plugin/detail screens.
+Both original Author stored-XSS payloads were saved through normal WordPress HTTP requests by an Author without unfiltered_html. Administrator browser visits produced no injected event handler or executed marker. A two-slide rotator initialized through the actual cycletwo.opts data key and completed a next-slide transition. Raw payload/log evidence is retained outside the public repository.
 
-The WordPress integration workflow records the runtime image's actual version. It does not certify the declared 7.1.3 target unless that exact version was tested.
+Full source PHPCS reports **0 errors and 112 warnings** with the existing ruleset. The remaining warnings concern legacy coercing comparisons and public API parameters. Security-only package PHPCS reports **0 errors and 0 warnings**. Package Plugin Check reports one GitHub Update URI policy error and 96 inherited naming/query/translation warnings. The Update URI is retained for this GitHub continuation; it is not permitted in a WordPress.org-hosted edition. None of these counts is a vulnerability total.
 
-## Open work
-Historical advisory mapping, full output-context review, all privilege boundaries, real browser rotation/navigation, complete widget administration, populated original-to-Reborn upgrade, custom templates, and actual-site integration remain open. Syntax success does not prove PHP 7.4 runtime support. Automated scanner counts are leads rather than vulnerability counts. No overall security sign-off is claimed.
+Local PHP lint, the dedicated PHPCompatibilityWP 7.4–8.3 scan, offline details contracts and the deterministic package unittest pass. The installed compatibility checker has incomplete PHP 8 coverage. The repository CI matrix separately checks PHP 7.4 and PHP 8.3 syntax and records its actual WordPress/PHP runtime image versions.
 
-## Repository setup verification — November 6, 2026
-The repeatable isolated lab installed the exact newly built ZIP on WordPress 7.0.2 / PHP 8.3.33. Seven templates, missing rotator handling, nonce/capability save checks, the authenticated Plugins row, six details tabs, and an empty PHP debug log passed. The lab removed its own containers afterward. Offline details and deterministic packaging tests also passed. These are fixture checks; the open work above remains open.
+## Earlier GitHub fixture evidence
 
-## GitHub-hosted verification — November 6, 2026
-The Checks workflow passed at commit f9af3df: both PHP matrix jobs, deterministic packaging, and the built-ZIP WordPress integration job. GitHub's runtime image reported WordPress **7.1.4** and PHP **8.3.36**. All seven template checks, metadata request guards, authenticated plugin/details screens, and the empty debug-log check passed there. This adds fixture evidence for WordPress 7.1.4; it does not establish an actual-site upgrade or close the broader security/browser checks. The separate manual standards workflow generated an advisory report with findings; its success means the reporting workflow completed, not that coding standards or security review are clean.
+The preceding development baseline passed four Checks jobs and recorded WordPress 7.1.4 / PHP 8.3.36. This is historical fixture evidence, distinct from the latest local checks. Readme Tested up to uses 7.1 as the family-level declaration; it does not certify every patch release. The replacement commit must pass fresh CI before its release assets are replaced.
+
+## Limits and remaining work
+
+This evidence does not cover every shortcode combination, complete widget-administration workflows, all transition effects, arbitrary custom theme overrides, multisite, a populated original-to-Reborn database upgrade, every declared PHP runtime, or a production security review. Unlimited lists and aggregate metadata queries remain a performance concern. The user reported a successful live installation, but that report is not an independent production audit.
+
+No automatic update service is bundled. Before release, consider running Codex Security in addition to these checks; it is not run automatically. The GitHub release remains a development prerelease with no commitment to regular future updates.

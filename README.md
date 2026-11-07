@@ -15,7 +15,7 @@ I am Jim Walker, **The Hack Repair Guy**. I am taking over maintenance of this i
 
 ## Current status: 4.0 development
 
-This repository contains a **development candidate**, not a production release. The historical WordPress.org listing was closed for a security issue. Modernization and the security review remain in progress; the name Reborn is not a security certification.
+This repository contains a **development candidate**, not a production release. The historical WordPress.org listing was closed for a security issue. The targeted security review and Author attack regressions have completed for the repaired paths. Populated upgrades, arbitrary custom templates and multisite coverage remain open; the name Reborn is not a security certification.
 
 Completed local checks include PHP 7.4/8.3 syntax checks, PHP 8.3 rendering of seven bundled templates, and focused metadata-save permission/nonce tests. Actual admin HTTP checks cover the native View details page and plugin metadata. Full browser interaction, lower-privilege output tracing, and populated-site upgrade validation remain open. See [validation scope](docs/VALIDATION.md) and [project status](PROJECT.md).
 
@@ -50,11 +50,11 @@ Use your own post IDs. The hyphenated rotator and single-testimonial aliases rem
 | Field | Declaration |
 |---|---|
 | Minimum WordPress | 6.9.4 |
-| WordPress compatibility target / readme Tested up to | 7.1.3 |
+| WordPress compatibility target / readme Tested up to | 7.1 |
 | Minimum PHP | 7.4 |
 | Modernization runtime target | PHP 8.3 |
 
-These declarations follow the Stickies plugin format. WordPress 7.1.3 runtime validation is pending. Recorded local runtime evidence uses WordPress 7.0.2 and PHP 8.3.33; GitHub CI also passed on WordPress 7.1.4 and PHP 8.3.36. These are fixture results, not a production-site compatibility guarantee.
+These declarations follow the Stickies plugin format. WordPress 7.1 is a family-level compatibility declaration. Recorded local runtime evidence uses WordPress 7.0.2 and PHP 8.3.33; GitHub CI also passed on WordPress 7.1.4 and PHP 8.3.36. These are fixture results, not a production-site compatibility guarantee.
 
 ## Develop and test
 

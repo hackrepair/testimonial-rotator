@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 /** Plugin information from local files; no network access needed. */
 final class THRG_TR_Details {
 
-    const NAME = "Testimonial Rotator (Reborn)";
+    const NAME = 'Testimonial Rotator (Reborn)';
 
     /**
      * Register hooks.
@@ -210,7 +210,7 @@ final class THRG_TR_Details {
         $info->homepage     = 'https://github.com/hackrepair/testimonial-rotator';
         $info->external     = true;
         $info->requires     = '6.9.4';
-        $info->tested       = '7.1.3';
+        $info->tested       = '7.1';
         $info->requires_php = '7.4';
         $info->last_updated = gmdate( 'Y-m-d H:i:s', (int) filemtime( THRG_TR_FILE ) );
         $info->sections     = $sections;

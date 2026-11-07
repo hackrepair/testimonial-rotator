@@ -2,7 +2,7 @@
 Contributors: hackrepair
 Tags: testimonials, testimonial rotator, reviews, widgets, shortcode
 Requires at least: 6.9.4
-Tested up to: 7.1.3
+Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 4.0
 License: GPLv2 or later
@@ -43,11 +43,11 @@ Reborn is maintained by [Jim Walker, The Hack Repair Guy — HackRepair.com](htt
 
 = Where version 4.0 stands =
 
-**Version 4.0 is currently a development candidate.** The first maintenance work adds metadata-save request checks, improves handling of missing rotators and malformed input, corrects a widget limit conversion, and restores a complete local View details experience.
+**Version 4.0 remains a development prerelease.** The November 7 replacement adds stored-XSS repairs, validated headings and template selection, contextual escaping, bounded ratings, hardened settings/widget inputs, local icon assets, and corrected aggregate-rating behavior. Existing post types, relationships, widget identity and shortcode aliases are preserved.
 
-Compatibility metadata follows the current Stickies settings: WordPress 6.9.4 minimum, WordPress 7.1.3 compatibility target, and PHP 7.4 minimum. The declared WordPress 7.1.3 value has not yet been independently runtime-tested for Reborn.
+Compatibility declarations: WordPress 6.9.4 minimum, WordPress 7.1 family target, and PHP 7.4 minimum. Local installed-ZIP tests use WordPress 7.0.2 / PHP 8.3.33. Earlier GitHub fixture checks used WordPress 7.1.4 / PHP 8.3.36; the CI workflow records the actual runtime for each build. PHP 7.4 syntax checks do not establish complete runtime compatibility.
 
-All PHP files in the preceding development milestone passed PHP 8.3.33 syntax checks, and focused runtime checks covered seven bundled rotator templates and metadata-save permissions. Full security review, browser interaction checks, and populated-site upgrade testing remain in progress. Bringing the plugin back includes doing that work carefully; it does not mean every historical issue has already been resolved.
+Targeted security review and regression tests covered both original Author stored-XSS paths in an administrator browser, all seven loop/single templates, request guards, malformed widget input, rating bounds, template containment and slider advancement. Full project PHPCS reports zero errors and 112 legacy warnings; security-only checks report zero errors/warnings. Populated-site upgrades, complete widget administration, arbitrary custom templates, multisite and broader production behavior remain outside that evidence.
 
 == History ==
 
@@ -67,7 +67,7 @@ In November 2026, I recovered the archived source and began the 4.0 maintenance 
 
 This continuation has a new name and a clear purpose: preserve useful testimonial content, repair aging code, and give the plugin a maintained future. **Testimonial Rotator (Reborn)** is that fresh start.
 
-The project repository is [hackrepair/testimonial-rotator](https://github.com/hackrepair/testimonial-rotator). A repository link is not an announcement that a public release has already been published. This edition is an unofficial continuation; the original WordPress.org listing has not been reopened by this work.
+The project repository is [hackrepair/testimonial-rotator](https://github.com/hackrepair/testimonial-rotator). Installable development prereleases are available in the repository Releases section. This edition is an unofficial continuation; the original WordPress.org listing has not been reopened by this work.
 
 == Installation ==
 
@@ -102,7 +102,7 @@ The original website was abandoned years ago, and those links no longer provide 
 Preserving existing testimonial posts, rotator relationships, metadata, widget identity, and shortcode names is a core project requirement. The plugin directory remains testimonial-rotator. Verify your actual data on staging; a complete populated-site upgrade test is still pending.
 
 = Is 4.0 ready for a live website? =
-The current build is for development and staging validation. PHP 8.3 checks are underway, and security and broader integration testing remain open. The details page will be updated as those milestones are completed.
+The current build remains a prerelease for staging validation. Installed-ZIP PHP 8.3 tests and targeted security/browser regressions have passed. Broader upgrade, custom-template and multisite coverage remains open; see the repository validation guide.
 
 = Should I expect more updates? =
 Future updates are unlikely. This work is limited to security and PHP-version maintenance, with no promise of new features, regular releases, or continuing support. The development status and remaining validation work described above still apply.
@@ -124,7 +124,7 @@ The plugin is separate from those themes. The development project includes Genes
 * Added a local WordPress View details dialog with description, history, installation, FAQ, changelog, and support tabs.
 * Removed abandoned website links and retired the legacy theme-pack update request to that website.
 * Preserved existing shortcode names, widget identity, post types, and metadata keys.
-* Security review, browser validation, and populated upgrade testing remain in progress.
+* November 7 replacement: repair stored-XSS output paths, confine templates, harden settings/widgets, clamp ratings, bundle icons locally, and correct aggregate ratings. Targeted security/browser regressions passed; populated upgrades and broader integration coverage remain open.
 
 = Archived upstream milestones =
 * 3.0.3 — June 15, 2020: original changelog reports security fixes.
@@ -133,6 +133,10 @@ The plugin is separate from those themes. The development project includes Genes
 * 2.0 — May 15, 2014: expanded rotator controls, ratings, author fields, and display options.
 
 The unmodified upstream source and full original changelog are preserved separately in the development archive.
+
+== Bundled assets ==
+
+Font Awesome 4.7.0 is served locally with this plugin; no default third-party CDN request is required. Its fonts use SIL OFL 1.1 and its CSS uses MIT; license texts are included under assets/font-awesome. The Hide Font Awesome setting still lets the active theme supply icons. The former CDN-version filter no longer selects an external asset.
 
 == Support ==
 

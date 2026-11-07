@@ -17,6 +17,8 @@ def run(*args, capture=False):
     result = subprocess.run(args, check=True, text=True, stdout=subprocess.PIPE if capture else None)
     return result.stdout if capture else ''
 
+if os.environ.get('REBORN_BROWSER'):
+    Path('/tmp/reborn-browser-done').unlink(missing_ok=True)
 run('python3', str(ROOT / 'scripts/build-release.py'))
 with TemporaryDirectory(prefix='reborn-lab-') as temp:
     temp = Path(temp)
@@ -92,6 +94,18 @@ with TemporaryDirectory(prefix='reborn-lab-') as temp:
         assert 'Future updates are unlikely.' in detail
         assert 'halgatewood.com' not in detail
         print('PASS authenticated Plugins row and all native details tabs')
+        if os.environ.get('REBORN_BROWSER'):
+            fixtures = wp('eval', """$u=wp_create_user('reviewauthor','author-lab-only','author@example.test'); $user=new WP_User($u); $user->set_role('author'); $r=wp_insert_post(array('post_type'=>'testimonial_rotator','post_status'=>'publish','post_author'=>$u,'post_title'=>'Browser rotator')); $t=wp_insert_post(array('post_type'=>'testimonial','post_status'=>'publish','post_author'=>$u,'post_title'=>'Browser testimonial','post_content'=>'Browser fixture')); update_post_meta($t,'_rotator_id','|'.$r.'|'); $p=wp_insert_post(array('post_status'=>'publish','post_author'=>$u,'post_title'=>'Shortcode test')); $m=wp_insert_post(array('post_status'=>'publish','post_author'=>$u,'post_title'=>'Metadata test','post_content'=>'[testimonial_rotator id="'.$r.'"]')); $t2=wp_insert_post(array('post_type'=>'testimonial','post_status'=>'publish','post_author'=>$u,'post_title'=>'Second browser testimonial','post_content'=>'Second browser fixture')); update_post_meta($t2,'_rotator_id','|'.$r.'|'); echo json_encode(array('rotator'=>$r,'post'=>$p,'meta'=>$m,'unfiltered_html'=>user_can($u,'unfiltered_html')));""")
+            Path('/tmp/reborn-browser-fixture.json').write_text(json.dumps({'base':base,'fixtures':json.loads(fixtures)}))
+            print('Browser fixture ready', flush=True)
+            for attempt in range(600):
+                if Path('/tmp/reborn-browser-done').exists(): break
+                time.sleep(1)
+            else: raise RuntimeError('Browser verification timed out')
+        css = urllib.request.urlopen(base + '/wp-content/plugins/testimonial-rotator/assets/font-awesome/css/font-awesome.min.css').read()
+        font = urllib.request.urlopen(base + '/wp-content/plugins/testimonial-rotator/assets/font-awesome/fonts/fontawesome-webfont.woff2').read()
+        assert b'@font-face' in css and font[:4] == b'wOF2'
+        print('PASS bundled local icon stylesheet and WOFF2 font')
         # A real plugin install must not emit PHP warnings or errors in this fixture run.
         log = dc('exec', '-T', 'wordpress', 'sh', '-c', 'if [ -f /var/www/html/wp-content/debug.log ]; then cat /var/www/html/wp-content/debug.log; fi', capture=True)
         assert not log.strip(), 'Unexpected PHP debug log:\n' + log

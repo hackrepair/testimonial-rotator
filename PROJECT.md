@@ -18,12 +18,12 @@ Maintain the archived Testimonial Rotator code for security and PHP-version comp
 
 ## Required before production release
 - [ ] Reproduce the actual site's original failure against its installed plugin version.
-- [ ] Complete security advisory research and contextual output/authorization review.
+- [x] Complete baseline security review, reproduce Author stored-XSS paths, and verify the targeted repairs.
 - [ ] Exercise all shortcode variants and widget saves through real browser workflows.
 - [ ] Verify rotation, previous/next controls, responsive layout, and custom template overrides.
 - [ ] Upgrade a populated original installation and verify data/settings relationships survive.
-- [ ] Validate the declared WordPress 7.1.3 target independently.
+- [x] Record local WordPress 7.0.2 / PHP 8.3.33 runtime checks and the earlier WordPress 7.1.4 CI fixture evidence; readme declares the 7.1 family.
 - [ ] Complete site-specific staging tests and review PHP logs.
-- [ ] Review the final ZIP, version references, checksum, and release notes.
+- [x] Review the replacement prerelease ZIP, version references, checksum, and release notes.
 
 CI checks cover a subset of these requirements; green CI is not release approval. Keep raw logs and site-specific evidence outside the public repository. Documentation must distinguish declarations, local observations, CI results, and actual production deployment.
